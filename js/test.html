@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update URL Parameters Example</title>
+</head>
+<body>
+    <button id="updateButton">Update URL Parameters</button>
+
+    <script>
+        document.getElementById('updateButton').addEventListener('click', function() {
+            // Update URL parameter
+            let urlParams = new URLSearchParams(window.location.search);
+            urlParams.set('id', 'id1');
+
+            // Update the URL without reloading the page
+            window.history.pushState({}, '', `${window.location.pathname}?${urlParams}`);
+
+            // Retrieve the value of the id
+            let idValue = urlParams.get('id');
+            alert(`The value of id is: ${idValue}`);
+        });
+    </script>
+</body>
+</html>
